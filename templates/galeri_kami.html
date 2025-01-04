@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Kami</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylegaleri.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='upload/logo/LogoRana.png') }}" alt="Logo UKM RANA 9" style="max-width: 100px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pendaftaran') }}">
+                        <i class="fas fa-pencil-alt"></i> Daftar Sekarang
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('tentang_kami') }}">
+                        <i class="fas fa-info-circle"></i> Tentang Kami
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('galeri_kami') }}">
+                        <i class="fas fa-images"></i> Galeri
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+  
+  <div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Galeri Kami</h1>
+    
+    <!-- Tombol Upload Foto -->
+    <div class="text-center mb-4">
+      <a href="{{ url_for('upload_foto') }}" class="btn btn-success btn-lg">
+        Upload Foto Baru
+      </a>
+    </div>
+
+    <h2 class="text-center text-muted mb-4">Foto-foto Kami:</h2>
+    
+    <!-- Galeri Foto -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for photo in photos %}
+      <div class="col">
+        <div class="card h-100">
+          <img src="{{ url_for('static', filename=photo.path) }}" alt="{{ photo.caption }}" class="card-img-top" style="max-height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ photo.caption }}</h5>  <!-- Only show the caption -->
+            <p class="text-muted">Creator: {{ photo.creator }} | Tahun: {{ photo.tahun }}</p>
+            
+            <!-- Tombol View Foto -->
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewModal{{ photo.id }}">
+              View Foto
+            </button>
+
+            <!-- Tombol Hapus Foto -->
+            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ photo.id }}">
+              Hapus Foto
+            </button>
+
+            <!-- Modal Konfirmasi Hapus -->
+            <div class="modal fade" id="deleteModal{{ photo.id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Masukkan PIN untuk menghapus foto ini:</p>
+                    <form action="{{ url_for('hapus_foto', photo_id=photo.id) }}" method="POST">
+                      <div class="mb-3">
+                        <label for="pin" class="form-label">PIN</label>
+                        <input type="password" class="form-control" id="pin" name="pin" required>
+                      </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-danger">Hapus Foto</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal View Foto -->
+            <div class="modal fade" id="viewModal{{ photo.id }}" tabindex="-1" aria-labelledby="viewModalLabel{{ photo.id }}" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="viewModalLabel{{ photo.id }}">Lihat Foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body text-center">
+                    <img src="{{ url_for('static', filename=photo.path) }}" alt="{{ photo.caption }}" class="img-fluid" style="max-height: 80vh; object-fit: contain;">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="col-12">
+        <p class="text-center">Belum ada foto di galeri.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+    <!-- Galeri Section -->
+    <div class="section mb-5">
+        <h3 style="text-align: center;"><strong>Galeri Kami</strong></h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for image in images %}
+                <div class="col">
+                    <img src="{{ url_for('static', filename='upload/foto/' + image) }}" alt="Galeri {{ loop.index }}" class="img-fluid rounded shadow-sm">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  <!-- Script Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

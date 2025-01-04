@@ -1,0 +1,210 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Soft Light Blue */
+    color: #003366; /* Dark blue for text */
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #003366; /* Dark blue for navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    max-width: 100px;
+    height: auto;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #7fb3d5; /* Soft light blue for hover effect */
+}
+
+.nav-link.active {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Section */
+.section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table */
+.table-bordered {
+    border: 1px solid #ddd;
+}
+
+.table-bordered th,
+.table-bordered td {
+    text-align: left;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.table-bordered thead th {
+    background-color: #e6f0ff; /* Very light blue for table header */
+}
+
+/* Button */
+.btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #00509e; /* Darker blue for primary button */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #003366; /* Darker hover effect */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red for danger */
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
+}
+
+.btn-success {
+    background-color: #28a745; /* Green for success */
+}
+
+.btn-success:hover {
+    background-color: #19692c;
+}
+
+/* Card */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Notification */
+#notification {
+    background-color: #66ccff; /* Soft light blue for notifications */
+    color: #ffffff;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#notification img {
+    width: 50px;
+    height: auto;
+}
+
+#notification button {
+    background-color: #ffffff;
+    color: #66ccff;
+    border: none;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#notification button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Footer */
+.footer {
+    background-color: #003366; /* Dark blue background for footer */
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer a {
+    color: #66ccff; /* Soft blue for footer links */
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer a:hover {
+    color: #ffffff;
+}
+
+.footer p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Social Icons */
+.social-links a {
+    color: #66ccff; /* Soft blue for social icons */
+    font-size: 18px;
+    margin: 0 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        max-width: 80px;
+    }
+
+    .section {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    #notification {
+        bottom: 10px;
+        right: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #notification button {
+        margin-top: 5px;
+    }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Foto</title>
+    <style>
+        /* Resetting some default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Heading Styling */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Form Styling */
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Label Styling */
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
+
+        /* Input Field Styling */
+        input[type="file"],
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 48%;
+            font-size: 16px;
+            margin-right: 4%;
+            margin-top: 10px;
+        }
+
+        /* Button Hover Effect */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Cancel Button Styling */
+        .cancel-btn {
+            background-color: #f44336; /* Red color for Cancel button */
+        }
+
+        /* Button for Batal (Cancel) */
+        .cancel-btn:hover {
+            background-color: #e53935;
+        }
+
+        /* Responsive design for mobile screens */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            form {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 14px;
+                width: 100%; /* Full-width on mobile */
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="file">Foto:</label>
+        <input type="file" name="file" required><br>
+        
+        <label for="caption">Caption:</label>
+        <input type="text" name="caption" required><br>
+        
+        <label for="creator">Creator:</label>
+        <input type="text" name="creator" required><br>
+        
+        <label for="year">Tahun:</label>
+        <input type="number" name="year" required><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Upload</button>
+
+        <!-- Cancel Button with Redirection to 'galeri_kami' page -->
+        <button type="button" class="cancel-btn" onclick="window.location.href='/galeri_kami';">Batalkan</button>
+    </form>
+
+</body>
+</html>

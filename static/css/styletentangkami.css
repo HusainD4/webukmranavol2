@@ -1,0 +1,113 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9; /* Soft background color for the body */
+    color: #333; /* Dark grey text color for better readability */
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #003366; /* Dark blue for the navbar */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for navbar */
+}
+
+.navbar-brand img {
+    max-width: 100px;
+    height: auto;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #66ccff; /* Light blue hover effect */
+}
+
+.nav-link.active {
+    color: #66ccff;
+    text-decoration: underline;
+}
+
+/* Main Content */
+.container {
+    max-width: 1000px;
+    margin-top: 50px;
+    padding: 0 15px;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    color: #003366; /* Dark blue for titles */
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Section Styling */
+.section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for sections */
+    margin-bottom: 30px;
+}
+
+.section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555; /* Light grey text for paragraph */
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for footer */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}
